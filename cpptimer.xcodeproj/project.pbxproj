@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		897E09A51F29C1E600721246 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 897E09A41F29C1E600721246 /* main.cpp */; };
+		897E09AC1F29C1F400721246 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 897E09AB1F29C1F400721246 /* main.cpp */; };
+		897E09B31F29C21700721246 /* JCTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 897E09AE1F29C21700721246 /* JCTimer.cpp */; };
+		897E09B41F29C21700721246 /* JCHeapTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 897E09B01F29C21700721246 /* JCHeapTimer.cpp */; };
+		897E09B51F29C21700721246 /* JCCascadeTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 897E09B21F29C21700721246 /* JCCascadeTimer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +27,13 @@
 
 /* Begin PBXFileReference section */
 		897E09A11F29C1E600721246 /* cpptimer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cpptimer; sourceTree = BUILT_PRODUCTS_DIR; };
-		897E09A41F29C1E600721246 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		897E09AB1F29C1F400721246 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		897E09AD1F29C21700721246 /* JCTimer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JCTimer.hpp; sourceTree = "<group>"; };
+		897E09AE1F29C21700721246 /* JCTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JCTimer.cpp; sourceTree = "<group>"; };
+		897E09AF1F29C21700721246 /* JCHeapTimer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JCHeapTimer.hpp; sourceTree = "<group>"; };
+		897E09B01F29C21700721246 /* JCHeapTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JCHeapTimer.cpp; sourceTree = "<group>"; };
+		897E09B11F29C21700721246 /* JCCascadeTimer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JCCascadeTimer.hpp; sourceTree = "<group>"; };
+		897E09B21F29C21700721246 /* JCCascadeTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JCCascadeTimer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +50,7 @@
 		897E09981F29C1E600721246 = {
 			isa = PBXGroup;
 			children = (
+				897E09AB1F29C1F400721246 /* main.cpp */,
 				897E09A31F29C1E600721246 /* cpptimer */,
 				897E09A21F29C1E600721246 /* Products */,
 			);
@@ -57,7 +67,12 @@
 		897E09A31F29C1E600721246 /* cpptimer */ = {
 			isa = PBXGroup;
 			children = (
-				897E09A41F29C1E600721246 /* main.cpp */,
+				897E09AD1F29C21700721246 /* JCTimer.hpp */,
+				897E09AE1F29C21700721246 /* JCTimer.cpp */,
+				897E09AF1F29C21700721246 /* JCHeapTimer.hpp */,
+				897E09B01F29C21700721246 /* JCHeapTimer.cpp */,
+				897E09B11F29C21700721246 /* JCCascadeTimer.hpp */,
+				897E09B21F29C21700721246 /* JCCascadeTimer.cpp */,
 			);
 			path = cpptimer;
 			sourceTree = "<group>";
@@ -119,7 +134,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				897E09A51F29C1E600721246 /* main.cpp in Sources */,
+				897E09B41F29C21700721246 /* JCHeapTimer.cpp in Sources */,
+				897E09B51F29C21700721246 /* JCCascadeTimer.cpp in Sources */,
+				897E09B31F29C21700721246 /* JCTimer.cpp in Sources */,
+				897E09AC1F29C1F400721246 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
