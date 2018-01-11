@@ -16,6 +16,7 @@
 #include <sstream>
 #include <strstream>
 #include <stdarg.h>
+#include <mutex>
 
 volatile bool stopped = false;
 
@@ -25,7 +26,7 @@ void output(const char *fmt, ...) {
     auto now = std::chrono::system_clock::now();
     auto nowt = std::chrono::system_clock::to_time_t(now);
     struct tm tmNow;
-    localtime_r(&nowt, &tmNow);
+	cpptimer::localtime(&tmNow, &nowt);
     auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count() % 1000;
     std::stringstream timestamp;
     timestamp << std::put_time(&tmNow, "%F-%T");
@@ -42,6 +43,9 @@ void output(const char *fmt, ...) {
 
 using TestTimerManager = JCCascadeTimerManager;
 using TestTimer = JCCascadeTimer;
+
+//using TestTimerManager = JCHeapTimerManager;
+//using TestTimer = JCHeapTimer;
 
 std::unique_ptr<TestTimerManager> timerManager;
 void runTimerManager() {
@@ -80,9 +84,20 @@ void testTimers() {
     });
 }
 
+void simpleTest() {
+	output("simple");
+	std::shared_ptr<TestTimer> cancelTimer;
+	auto timer = timerManager->createTimer();
+	timer->runAfter(10000, [] {
+
+	});
+	cancelTimer = timer;
+	cancelTimer->cancel();
+}
 int main(int argc, const char * argv[]) {
     runTimerManager();
-    testTimers();
+    //testTimers();
+	simpleTest();
     std::thread waitFinished([]{
         while(!stopped) {
             std::this_thread::sleep_for(std::chrono::seconds(1));

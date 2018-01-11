@@ -1,4 +1,4 @@
-
-cpptimer.xcodeproj/xcuserdata/dawenrie.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
-
-cpptimer.xcodeproj/xcuserdata/dawenrie.xcuserdatad/xcschemes/cpptimer.xcscheme
+cpptimer.xcodeproj/*
+.vs/
+vcproj/.vs/
+vcproj/x64/

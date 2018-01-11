@@ -8,26 +8,8 @@
 
 #include "JCTimer.hpp"
 
-#ifdef _MSC_VER
-#define _CRT_SECURE_NO_WARNINGS
-# include <sys/timeb.h>
-#else
-# include <sys/time.h>
-#endif
-
 longtime_t JCTimerManager::getCurrentMillisecs() {
-#ifdef _MSC_VER
-    _timeb timebuffer;
-    _ftime(&timebuffer);
-    unsigned long long ret = timebuffer.time;
-    ret = ret * 1000 + timebuffer.millitm;
-    return ret;
-#else
-    timeval tv;       
-    ::gettimeofday(&tv, 0);
-    longtime_t ret = tv.tv_sec;
-    return ret * 1000 + tv.tv_usec / 1000;
-#endif
+	return cpptimer::getCurrentMillisecs();
 }
 
 #ifdef TRACE_TIMER
@@ -35,6 +17,8 @@ longtime_t JCTimerManager::getCurrentMillisecs() {
 #include <iomanip>
 #include <sstream>
 #include <strstream>
+#include <chrono>
+#include <stdarg.h>
 #define TRACE(...) traceAction(__VA_ARGS__)
 #else
 #define TRACE(...) do{}while(0)
@@ -52,7 +36,7 @@ void JCTimer::traceAction(const char* fmt, ...) {
     auto now = std::chrono::system_clock::now();
     auto nowt = std::chrono::system_clock::to_time_t(now);
     struct tm tmNow;
-    localtime_r(&nowt, &tmNow);
+	cpptimer::localtime(&tmNow, &nowt);
     auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count() % 1000;
     std::stringstream prefix;
     prefix << std::put_time(&tmNow, "%F-%T");
@@ -106,8 +90,8 @@ void JCTimer::runEvery(int ms, std::function<void ()> f) {
 
 void JCTimer::cancel() {
     if (isValid()) {
-        markInvalid();
-        removeFromManager();
+		removeFromManager();
+		markInvalid();
         TRACE("cancel");
     }        
 }

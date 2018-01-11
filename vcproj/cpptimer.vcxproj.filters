@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="cpptimer">
+      <UniqueIdentifier>{8f697a1a-e8a2-42da-a04a-265897b3b038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="systemtime">
+      <UniqueIdentifier>{2ecf2eb2-95f2-4bdc-abfc-573d31e99e4a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\cpptimer\JCCascadeTimer.cpp">
+      <Filter>cpptimer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cpptimer\JCHeapTimer.cpp">
+      <Filter>cpptimer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cpptimer\JCTimer.cpp">
+      <Filter>cpptimer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\systemtime\SystemTime.cpp">
+      <Filter>systemtime</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\cpptimer\JCCascadeTimer.hpp">
+      <Filter>cpptimer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cpptimer\JCHeapTimer.hpp">
+      <Filter>cpptimer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cpptimer\JCTimer.hpp">
+      <Filter>cpptimer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\systemtime\SystemTime.hpp">
+      <Filter>systemtime</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" />
+  </ItemGroup>
+</Project>

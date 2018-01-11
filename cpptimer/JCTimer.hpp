@@ -12,9 +12,11 @@
 #include <functional>
 #include <string>
 
+#include "SystemTime.hpp"
+
 #define TRACE_TIMER 1
 
-using longtime_t = unsigned long long;
+using longtime_t = cpptimer::SystemTime;
 
 class JCTimerManager {
 public:
