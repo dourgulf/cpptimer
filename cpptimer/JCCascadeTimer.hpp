@@ -19,7 +19,7 @@ class JCCascadeTimer;
 
 using JCCascadeTimerT = std::shared_ptr<JCCascadeTimer>;
 
-class JCCascadeTimerManager: JCTimerManager
+class JCCascadeTimerManager: TimerManager
 {
 public:
     JCCascadeTimerManager();
@@ -41,7 +41,7 @@ private:
     longtime_t checkTime_;
 };
 
-class JCCascadeTimer: public JCTimer, public std::enable_shared_from_this<JCCascadeTimer>
+class JCCascadeTimer: public Timer, public std::enable_shared_from_this<JCCascadeTimer>
 {
 public:
     JCCascadeTimer(JCCascadeTimerManager &m): manager_(m), vecIndex_(-1){}

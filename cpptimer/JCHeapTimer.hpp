@@ -19,7 +19,7 @@ class JCHeapTimer;
 
 using JCHeapTimerT = std::shared_ptr<JCHeapTimer>;
 
-class JCHeapTimerManager: JCTimerManager {
+class JCHeapTimerManager: TimerManager {
 public:
     JCHeapTimerManager() {
         heap_.reserve(16);
@@ -45,7 +45,7 @@ private:
     std::vector<HeapEntry> heap_;
 };
 
-class JCHeapTimer: public JCTimer, public std::enable_shared_from_this<JCHeapTimer> {
+class JCHeapTimer: public Timer, public std::enable_shared_from_this<JCHeapTimer> {
 private:    
     JCHeapTimer(JCHeapTimerManager &m): manager_(m), heapIndex_(-1){}
     

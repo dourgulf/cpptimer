@@ -94,6 +94,7 @@ void simpleTest() {
 	cancelTimer = timer;
 	cancelTimer->cancel();
 }
+
 int main(int argc, const char * argv[]) {
     runTimerManager();
     //testTimers();

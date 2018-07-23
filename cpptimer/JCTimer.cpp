@@ -1,14 +1,11 @@
 //
-//  JCTimer.cpp
-//  cpptimer
-//
 //  Created by dawenhing on 10/07/2017.
 //  Copyright © 2017 dawenhing. All rights reserved.
 //
 
 #include "JCTimer.hpp"
 
-longtime_t JCTimerManager::getCurrentMillisecs() {
+longtime_t TimerManager::getCurrentMillisecs() {
 	return cpptimer::getCurrentMillisecs();
 }
 
@@ -25,14 +22,14 @@ longtime_t JCTimerManager::getCurrentMillisecs() {
 #endif
 
 #ifdef TRACE_TIMER
-JCTimer::~JCTimer() {
+Timer::~Timer() {
     TRACE("dtor");
 }
 
-void JCTimer::setTraceName(const std::string& name) {
+void Timer::setTraceName(const std::string& name) {
     traceName_ = name;
 };
-void JCTimer::traceAction(const char* fmt, ...) {
+void Timer::traceAction(const char* fmt, ...) {
     auto now = std::chrono::system_clock::now();
     auto nowt = std::chrono::system_clock::to_time_t(now);
     struct tm tmNow;
@@ -58,44 +55,44 @@ void JCTimer::traceAction(const char* fmt, ...) {
 }
 #endif
 
-void JCTimer::runAfter(int ms, std::function<void ()> f) {
+void Timer::runAfter(int ms, std::function<void ()> f) {
     cancel();
     repeat = false;
     interval_ = ms;
-    expires_ = interval_ + JCTimerManager::getCurrentMillisecs();
+    expires_ = interval_ + TimerManager::getCurrentMillisecs();
     task_ = std::move(f);
     addToManager();
     TRACE("setup after %d(ms)", ms);
 }
 
-void JCTimer::runAt(longtime_t ts, std::function<void ()> f) {
+void Timer::runAt(longtime_t ts, std::function<void ()> f) {
     cancel();
     repeat = false;
     expires_ = ts;
-    interval_ = static_cast<int>(ts - JCTimerManager::getCurrentMillisecs());
+    interval_ = static_cast<int>(ts - TimerManager::getCurrentMillisecs());
     task_ = std::move(f);
     addToManager();
     TRACE("setup at %lld", ts);        
 }
 
-void JCTimer::runEvery(int ms, std::function<void ()> f) {
+void Timer::runEvery(int ms, std::function<void ()> f) {
     cancel();
     repeat = true;
     interval_ = ms;
-    expires_ = interval_ + JCTimerManager::getCurrentMillisecs();
+    expires_ = interval_ + TimerManager::getCurrentMillisecs();
     task_ = std::move(f);
     addToManager();              
     TRACE("setup repeat %d(ms)", ms);        
 }
 
-void JCTimer::cancel() {
+void Timer::cancel() {
     if (isValid()) {
 		removeFromManager();
 		markInvalid();
         TRACE("cancel");
     }        
 }
-void JCTimer::onTimer(longtime_t now) {
+void Timer::onTimer(longtime_t now) {
     if (repeat) {
         expires_ = interval_ + now;
         addToManager();
